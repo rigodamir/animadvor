@@ -1,0 +1,104 @@
+import { Box, Text, Input, Textarea, Center } from "@chakra-ui/react";
+import { ReactComponent as AnimadvorLogo } from "../../Assets/vectors/animadvorLogo.svg";
+import { HelperBadges } from "../../Components/HelperBadges/HelperBadges";
+import { NewsCard } from "../../Components/NewsCard/NewsCard";
+
+export const HomeScreen = () => {
+  const text =
+    "Dođite, upoznajte ih sve, provedite predivno vrijeme sa svim tim divnim njuškicama i nikad ne znate , možda baš neka od njih osvoji vaše srce i postane dio vaše obitelji.";
+
+  return (
+    <Center>
+      <Box>
+        <Box
+          display="flex"
+          flex={1}
+          flexDirection="row"
+          px={10}
+          py={50}
+          alignItems="center"
+          maxW={1200}
+        >
+          <Box maxW="60%">
+            <Text fontWeight="bold" fontSize="6xl">
+              Udruga za zaštitu životinja
+            </Text>
+            <Text fontWeight="semibold" fontSize="2xl" color="GrayText">
+              {text}
+            </Text>
+          </Box>
+          <AnimadvorLogo />
+        </Box>
+        <HelperBadges />
+        <Box px={10}>
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Text fontWeight="bold" fontSize="4xl">
+              Novosti
+            </Text>
+            <Text
+              backgroundColor="blue.500"
+              borderRadius={5}
+              px={3}
+              py={2}
+              color="white"
+            >
+              Vidi sve
+            </Text>
+          </Box>
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            flexDirection="row"
+          >
+            <NewsCard
+              imageUrl={
+                "https://scontent-frx5-1.xx.fbcdn.net/v/t39.30808-6/277562427_10227663307956020_8228504622204923481_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=973b4a&_nc_ohc=Dpj4Q_aC9X4AX-m1XNm&_nc_ht=scontent-frx5-1.xx&oh=00_AT8e6LiHedJWFO0Gyqcr8qrb4XWBxce2ymb1U4V3jm9puA&oe=6258473A"
+              }
+              title="Lorem Ipsum"
+              body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eu ante eu felis faucibus congue. Pellentesque sollicitudin lacus at nisl ullamcorper, nec commodo augue imperdiet."
+            />
+            <NewsCard
+              imageUrl={
+                "https://scontent-frx5-1.xx.fbcdn.net/v/t39.30808-6/277562427_10227663307956020_8228504622204923481_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=973b4a&_nc_ohc=Dpj4Q_aC9X4AX-m1XNm&_nc_ht=scontent-frx5-1.xx&oh=00_AT8e6LiHedJWFO0Gyqcr8qrb4XWBxce2ymb1U4V3jm9puA&oe=6258473A"
+              }
+              title="Lorem Ipsum"
+              body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eu ante eu felis faucibus congue. Pellentesque sollicitudin lacus at nisl ullamcorper, nec commodo augue imperdiet."
+            />
+            <NewsCard
+              imageUrl={
+                "https://scontent-frx5-1.xx.fbcdn.net/v/t39.30808-6/277562427_10227663307956020_8228504622204923481_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=973b4a&_nc_ohc=Dpj4Q_aC9X4AX-m1XNm&_nc_ht=scontent-frx5-1.xx&oh=00_AT8e6LiHedJWFO0Gyqcr8qrb4XWBxce2ymb1U4V3jm9puA&oe=6258473A"
+              }
+              title="Lorem Ipsum"
+              body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eu ante eu felis faucibus congue. Pellentesque sollicitudin lacus at nisl ullamcorper, nec commodo augue imperdiet."
+            />
+          </Box>
+          <Box>
+            <Text textAlign="center" fontWeight="bold" fontSize="4xl" my={10}>
+              Kontaktirajte Nas
+            </Text>
+            <Box display="flex" flexDirection="row">
+              <Box flex="2">
+                <Input placeholder="Ime i prezime" mb={5} />
+                <Input placeholder="E-mail" mb={5} />
+                <Input placeholder="Telefonski broj" />
+              </Box>
+              <Box ml={5} flex="3">
+                <Textarea
+                  placeholder="Poruka..."
+                  resize="none"
+                  minH="100%"
+                  minW="100%"
+                />
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    </Center>
+  );
+};
