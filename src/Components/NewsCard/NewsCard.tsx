@@ -12,7 +12,8 @@ export const NewsCard = ({ title, body, imageUrl }: NewsCardProps) => {
       maxW="300"
       minW="300"
       my={10}
-      backgroundColor={theme.colors.gray[100]}
+      borderColor="gray.300"
+      borderWidth="thin"
       borderRadius={10}
     >
       {imageUrl && (
