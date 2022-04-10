@@ -14,9 +14,11 @@ export const NavigationButtons = () => {
           O nama
         </Text>
       </Link>
-      <Text color="white" mx="2" fontSize="large">
-        Novosti
-      </Text>
+      <Link to="/novosti">
+        <Text color="white" mx="2" fontSize="large">
+          Novosti
+        </Text>
+      </Link>
       <Text color="white" mx="2" fontSize="large">
         Donacije
       </Text>

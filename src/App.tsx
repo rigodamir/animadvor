@@ -5,6 +5,7 @@ import { Footer } from "./Components/Footer/Footer";
 import { NavigationBar } from "./Components/NavigationBar/NavigationBar";
 import { AboutUs } from "./Screens/AboutUs/AboutUs";
 import { HomeScreen } from "./Screens/HomeScreen/HomeScreen";
+import { NewsScreen } from "./Screens/News/NewsScreen";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomeScreen />} />
         <Route path="/onama" element={<AboutUs />} />
+        <Route path="/novosti" element={<NewsScreen />} />
       </Routes>
       <Footer />
     </ChakraProvider>
