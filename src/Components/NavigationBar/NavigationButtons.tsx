@@ -21,7 +21,7 @@ export const NavigationButtons = () => {
         Donacije
       </Text>
       <Text color="white" mx="2" fontSize="large">
-        Kontakti
+        Kontakt
       </Text>
     </Box>
   );
