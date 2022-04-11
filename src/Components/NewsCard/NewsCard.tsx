@@ -29,7 +29,7 @@ export const NewsCard = ({ title, body, imageUrl }: NewsCardProps) => {
         />
       )}
       <Box p={5}>
-        <Text fontSize="2xl" fontWeight="bold" mb={2}>
+        <Text fontSize="larger" fontWeight="bold">
           {title}
         </Text>
         <Text noOfLines={4}>{body}</Text>

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ReactComponent as AnimadvorLogo } from "../../Assets/vectors/animadvorLogo.svg";
 import { HelperBadges } from "../../Components/HelperBadges/HelperBadges";
 import { NewsCard } from "../../Components/NewsCard/NewsCard";
+import { news } from "../News/consts";
 
 export const HomeScreen = () => {
   const text =
@@ -59,27 +60,15 @@ export const HomeScreen = () => {
             justifyContent="space-between"
             flexDirection="row"
           >
-            <NewsCard
-              imageUrl={
-                "https://scontent-frx5-1.xx.fbcdn.net/v/t39.30808-6/277562427_10227663307956020_8228504622204923481_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=973b4a&_nc_ohc=Dpj4Q_aC9X4AX-m1XNm&_nc_ht=scontent-frx5-1.xx&oh=00_AT8e6LiHedJWFO0Gyqcr8qrb4XWBxce2ymb1U4V3jm9puA&oe=6258473A"
-              }
-              title="Lorem Ipsum"
-              body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eu ante eu felis faucibus congue. Pellentesque sollicitudin lacus at nisl ullamcorper, nec commodo augue imperdiet."
-            />
-            <NewsCard
-              imageUrl={
-                "https://scontent-frx5-1.xx.fbcdn.net/v/t39.30808-6/277562427_10227663307956020_8228504622204923481_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=973b4a&_nc_ohc=Dpj4Q_aC9X4AX-m1XNm&_nc_ht=scontent-frx5-1.xx&oh=00_AT8e6LiHedJWFO0Gyqcr8qrb4XWBxce2ymb1U4V3jm9puA&oe=6258473A"
-              }
-              title="Lorem Ipsum"
-              body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eu ante eu felis faucibus congue. Pellentesque sollicitudin lacus at nisl ullamcorper, nec commodo augue imperdiet."
-            />
-            <NewsCard
-              imageUrl={
-                "https://scontent-frx5-1.xx.fbcdn.net/v/t39.30808-6/277562427_10227663307956020_8228504622204923481_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=973b4a&_nc_ohc=Dpj4Q_aC9X4AX-m1XNm&_nc_ht=scontent-frx5-1.xx&oh=00_AT8e6LiHedJWFO0Gyqcr8qrb4XWBxce2ymb1U4V3jm9puA&oe=6258473A"
-              }
-              title="Lorem Ipsum"
-              body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eu ante eu felis faucibus congue. Pellentesque sollicitudin lacus at nisl ullamcorper, nec commodo augue imperdiet."
-            />
+            {news.slice(0, 3).map((item) => {
+              return (
+                <NewsCard
+                  body={item.body}
+                  title={item.title}
+                  imageUrl={item.imageUrl}
+                />
+              );
+            })}
           </Box>
           <Box>
             <Text textAlign="center" fontWeight="bold" fontSize="4xl" my={10}>
