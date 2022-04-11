@@ -19,6 +19,11 @@ export const NavigationButtons = () => {
           Novosti
         </Text>
       </Link>
+      <Link to="/zivotinje">
+        <Text color="white" mx="2" fontSize="large">
+          Životinje
+        </Text>
+      </Link>
       <Text color="white" mx="2" fontSize="large">
         Donacije
       </Text>

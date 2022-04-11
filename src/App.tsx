@@ -4,6 +4,7 @@ import { Footer } from "./Components/Footer/Footer";
 /* import { Footer } from "./Components/Footer/Footer"; */
 import { NavigationBar } from "./Components/NavigationBar/NavigationBar";
 import { AboutUs } from "./Screens/AboutUs/AboutUs";
+import { AnimalsScreen } from "./Screens/Animals/AnimalsScreen";
 import { ContactScreen } from "./Screens/Contact/ ContactScreen";
 import { HomeScreen } from "./Screens/HomeScreen/HomeScreen";
 import { NewsScreen } from "./Screens/News/NewsScreen";
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/onama" element={<AboutUs />} />
         <Route path="/novosti" element={<NewsScreen />} />
         <Route path="/kontakt" element={<ContactScreen />} />
+        <Route path="/zivotinje" element={<AnimalsScreen />} />
       </Routes>
       <Footer />
     </ChakraProvider>
