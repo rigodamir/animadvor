@@ -22,9 +22,11 @@ export const NavigationButtons = () => {
       <Text color="white" mx="2" fontSize="large">
         Donacije
       </Text>
-      <Text color="white" mx="2" fontSize="large">
-        Kontakt
-      </Text>
+      <Link to="/kontakt">
+        <Text color="white" mx="2" fontSize="large">
+          Kontakt
+        </Text>
+      </Link>
     </Box>
   );
 };

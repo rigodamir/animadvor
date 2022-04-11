@@ -1,4 +1,5 @@
 import { Box, Text, Input, Textarea, Center } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import { ReactComponent as AnimadvorLogo } from "../../Assets/vectors/animadvorLogo.svg";
 import { HelperBadges } from "../../Components/HelperBadges/HelperBadges";
 import { NewsCard } from "../../Components/NewsCard/NewsCard";
@@ -21,7 +22,7 @@ export const HomeScreen = () => {
         >
           <Box maxW="60%">
             <Text fontWeight="bold" fontSize="6xl">
-              Udruga za zaštitu životinja
+              Udruga za zaštitu životinja Anima Dvor
             </Text>
             <Text fontWeight="semibold" fontSize="2xl" color="GrayText">
               {text}
@@ -40,15 +41,18 @@ export const HomeScreen = () => {
             <Text fontWeight="bold" fontSize="4xl">
               Novosti
             </Text>
-            <Text
-              backgroundColor="blue.500"
-              borderRadius={5}
-              px={3}
-              py={2}
-              color="white"
-            >
-              Vidi sve
-            </Text>
+            <Link to="/novosti">
+              {" "}
+              <Text
+                backgroundColor="blue.500"
+                borderRadius={5}
+                px={3}
+                py={2}
+                color="white"
+              >
+                Vidi sve
+              </Text>
+            </Link>
           </Box>
           <Box
             display="flex"
