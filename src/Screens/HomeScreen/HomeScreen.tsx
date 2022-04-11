@@ -20,6 +20,7 @@ export const HomeScreen = () => {
           py={50}
           alignItems="center"
           maxW={1200}
+          mb={20}
         >
           <Box maxW="60%">
             <Text fontWeight="bold" fontSize="6xl">

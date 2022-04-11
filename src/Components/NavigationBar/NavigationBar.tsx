@@ -15,7 +15,7 @@ export const NavigationBar = () => {
     >
       <AnimadvorHeader style={{ width: 120, height: 40 }} />
       <NavigationButtons />
-      <Text color="white">Udomi me</Text>
+      <Text color="white">Prijava</Text>
     </Box>
   );
 };
