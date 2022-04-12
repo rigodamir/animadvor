@@ -25,17 +25,18 @@ export const AboutUs = () => {
             />
             <Box
               display="flex"
-              flexDirection="row"
+              flexDirection={{ md: "row", base: "column" }}
               justifyContent="space-between"
               mt={5}
             >
               <Image
                 src={require("../../Assets/images/aboutUs2.jpeg")}
-                style={{ width: "49%" }}
+                width={{ md: "49%", base: "100%" }}
               />
               <Image
                 src={require("../../Assets/images/aboutUs3.jpeg")}
-                style={{ width: "49%" }}
+                width={{ md: "49%", base: "100%" }}
+                mt={{ base: 5, md: 0 }}
               />
             </Box>
           </Box>

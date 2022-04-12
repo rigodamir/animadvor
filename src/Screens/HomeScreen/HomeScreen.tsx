@@ -15,18 +15,22 @@ export const HomeScreen = () => {
         <Box
           display="flex"
           flex={1}
-          flexDirection="row"
+          flexDirection={{ base: "column-reverse", md: "row" }}
           px={10}
           py={50}
           alignItems="center"
           maxW={1200}
           mb={20}
         >
-          <Box maxW="60%">
-            <Text fontWeight="bold" fontSize="6xl">
+          <Box maxW={{ base: "80%", md: "60%" }}>
+            <Text fontWeight="bold" fontSize={{ base: "4xl", lg: "6xl" }}>
               Udruga za zaštitu životinja Anima Dvor
             </Text>
-            <Text fontWeight="semibold" fontSize="2xl" color="GrayText">
+            <Text
+              fontWeight="semibold"
+              fontSize={{ base: "xl", md: "2xl" }}
+              color="GrayText"
+            >
               {text}
             </Text>
           </Box>
@@ -39,6 +43,7 @@ export const HomeScreen = () => {
             flexDirection="row"
             justifyContent="space-between"
             alignItems="center"
+            px={16}
           >
             <Text fontWeight="bold" fontSize="4xl">
               Novosti
@@ -56,32 +61,34 @@ export const HomeScreen = () => {
               </Text>
             </Link>
           </Box>
-          <Box
-            display="flex"
-            justifyContent="space-between"
-            flexDirection="row"
-          >
-            {news.slice(0, 3).map((item) => {
-              return (
-                <NewsCard
-                  body={item.body}
-                  title={item.title}
-                  imageUrl={item.imageUrl}
-                />
-              );
-            })}
-          </Box>
+          <Center>
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              flexDirection={{ base: "column", lg: "row" }}
+            >
+              {news.slice(0, 3).map((item) => {
+                return (
+                  <NewsCard
+                    body={item.body}
+                    title={item.title}
+                    imageUrl={item.imageUrl}
+                  />
+                );
+              })}
+            </Box>
+          </Center>
           <Box>
             <Text textAlign="center" fontWeight="bold" fontSize="4xl" my={10}>
               Kontaktirajte Nas
             </Text>
-            <Box display="flex" flexDirection="row">
+            <Box display="flex" flexDirection={{ base: "column", md: "row" }}>
               <Box flex="2">
                 <Input placeholder="Ime i prezime" mb={5} />
                 <Input placeholder="E-mail" mb={5} />
-                <Input placeholder="Telefonski broj" />
+                <Input placeholder="Telefonski broj" mb={{ base: 5, md: 0 }} />
               </Box>
-              <Box ml={5} flex="3">
+              <Box ml={{ base: 0, md: 5 }} flex="3">
                 <Textarea
                   placeholder="Poruka..."
                   resize="none"

@@ -6,16 +6,21 @@ export const Footer = () => {
   return (
     <Box
       display="flex"
-      flexDirection="row"
+      flexDirection={{ base: "column", md: "row" }}
       justifyContent="space-between"
       backgroundColor="#205072"
       alignItems="center"
       px={10}
-      width="100%"
       mt={10}
+      pb={{ base: "10", md: "0" }}
     >
       <AnimadvorLogo style={{ width: 100, height: 100 }} />
-      <Text color="white" fontSize="sm">
+      <Text
+        color="white"
+        fontSize="sm"
+        py={{ base: "10", md: "0" }}
+        textAlign="center"
+      >
         © COPYRIGHT 2022 | Udruga za zaštitu životinja Anima Dvor | ALL RIGHTS
       </Text>
       <FaFacebook

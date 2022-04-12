@@ -6,16 +6,20 @@ export const NavigationBar = () => {
   return (
     <Box
       display="flex"
-      flexDirection="row"
+      flexDirection={{ base: "column", md: "row" }}
       justifyContent="space-between"
       alignItems="center"
       py="5"
       px="5"
       backgroundColor="#205072"
     >
-      <AnimadvorHeader style={{ width: 120, height: 40 }} />
+      <Box mb={{ base: "5", md: "0" }}>
+        <AnimadvorHeader style={{ width: 120, height: 40 }} />
+      </Box>
       <NavigationButtons />
-      <Text color="white">Prijava</Text>
+      <Text color="white" mx="2" fontSize="large" mt={{ base: "2", md: "0" }}>
+        Prijava
+      </Text>
     </Box>
   );
 };

@@ -5,7 +5,7 @@ export const HelperBadges = () => {
   return (
     <Box
       display="flex"
-      flexDirection="row"
+      flexDirection={{ base: "column", md: "row" }}
       justifyContent="center"
       alignItems="center"
       mb={20}
@@ -13,7 +13,7 @@ export const HelperBadges = () => {
       <Box
         borderRadius={10}
         backgroundColor="red.300"
-        p="10"
+        p={{ base: "2", md: "10" }}
         style={{
           display: "flex",
           flexDirection: "column",
@@ -25,20 +25,28 @@ export const HelperBadges = () => {
           color={theme.colors.white}
           style={{ marginBottom: 5 }}
         />
-        <Text fontWeight="semibold" fontSize="larger" color="white">
+        <Text
+          fontWeight="semibold"
+          fontSize={{ base: "sm", md: "larger" }}
+          color="white"
+          align="center"
+        >
           Izaberite ljubimca
         </Text>
       </Box>
       <Box
-        height={2}
-        width="8vw"
-        background={`linear-gradient(to right, ${theme.colors.red[300]}, ${theme.colors.blue[300]})`}
+        height={{ base: "8vw", md: "2" }}
+        width={{ base: "2", md: "8vw" }}
+        background={{
+          base: `linear-gradient(to bottom, ${theme.colors.red[300]}, ${theme.colors.blue[300]})`,
+          md: `linear-gradient(to right, ${theme.colors.red[300]}, ${theme.colors.blue[300]})`,
+        }}
       />
 
       <Box
         borderRadius={10}
         backgroundColor="blue.300"
-        p="10"
+        p={{ base: "2", md: "10" }}
         style={{
           display: "flex",
           flexDirection: "column",
@@ -50,20 +58,28 @@ export const HelperBadges = () => {
           color={theme.colors.white}
           style={{ marginBottom: 5 }}
         />
-        <Text fontWeight="semibold" fontSize="larger" color="white">
+        <Text
+          fontWeight="semibold"
+          fontSize={{ base: "sm", md: "larger" }}
+          color="white"
+          align="center"
+        >
           Kontaktirajte nas
         </Text>
       </Box>
       <Box
-        height={2}
-        width="8vw"
-        background={`linear-gradient(to right, ${theme.colors.blue[300]}, ${theme.colors.orange[300]})`}
+        height={{ base: "8vw", md: "2" }}
+        width={{ base: "2", md: "8vw" }}
+        background={{
+          base: `linear-gradient(to bottom, ${theme.colors.blue[300]}, ${theme.colors.orange[300]})`,
+          md: `linear-gradient(to right, ${theme.colors.blue[300]}, ${theme.colors.orange[300]})`,
+        }}
       />
 
       <Box
         borderRadius={10}
         backgroundColor="orange.300"
-        p="10"
+        p={{ base: "2", md: "10" }}
         style={{
           display: "flex",
           flexDirection: "column",
@@ -77,7 +93,7 @@ export const HelperBadges = () => {
         />
         <Text
           fontWeight="semibold"
-          fontSize="larger"
+          fontSize={{ base: "sm", md: "larger" }}
           color="white"
           align="center"
         >
@@ -86,14 +102,14 @@ export const HelperBadges = () => {
       </Box>
       {/* <Box
         height={2}
-        width="8vw"
+        width={"8vw"}
         background={`linear-gradient(to right, ${theme.colors.orange[300]}, ${theme.colors.green[300]})`}
       />
 
       <Box
         borderRadius={10}
         backgroundColor="green.300"
-        p="10"
+        p={{base: "2", md: "10"}}
         style={{
           display: "flex",
           flexDirection: "column",
@@ -108,8 +124,8 @@ export const HelperBadges = () => {
         <Text
           align="center"
           fontWeight="semibold"
-          fontSize="larger"
-          color="white"
+          fontSize={{base: "sm", md: "larger"
+          color=}}"white"
         >
           Novi član obitelji
         </Text>
