@@ -1,6 +1,7 @@
 import { Box, Text } from "@chakra-ui/react";
 import { NavigationButtons } from "./NavigationButtons";
 import { ReactComponent as AnimadvorHeader } from "../../Assets/vectors/animadvorHeader.svg";
+import { Link } from "react-router-dom";
 
 export const NavigationBar = () => {
   return (
@@ -17,9 +18,11 @@ export const NavigationBar = () => {
         <AnimadvorHeader style={{ width: 120, height: 40 }} />
       </Box>
       <NavigationButtons />
-      <Text color="white" mx="2" fontSize="large" mt={{ base: "2", md: "0" }}>
-        Prijava
-      </Text>
+      <Link to="/login">
+        <Text color="white" mx="2" fontSize="large" mt={{ base: "2", md: "0" }}>
+          Prijava
+        </Text>
+      </Link>
     </Box>
   );
 };
