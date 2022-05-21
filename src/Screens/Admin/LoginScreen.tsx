@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { InputController } from "../../Components/Form/InputController";
 import { loginAuth } from "../../Services/Auth/authApi";
 import { useNavigate } from "react-router-dom";
+import api from "../../Services/api";
 
 export const LoginScreen = () => {
   const { control, handleSubmit } = useForm();
@@ -16,8 +17,14 @@ export const LoginScreen = () => {
 
       if (!user) return setError("Krivi unos!");
       setError("");
-      localStorage.setItem("@user", JSON.stringify(user));
-      navigation("/admin");
+
+      localStorage.setItem(
+        "@user",
+        JSON.stringify({ refreshToken: user.refreshToken, user: user.user })
+      );
+      api.defaults.headers.common.Authorization = `Bearer ${user.token}`;
+
+      navigation("/admin/novosti");
     })();
   };
 
@@ -31,7 +38,7 @@ export const LoginScreen = () => {
         />
         <InputController
           control={control}
-          name="name"
+          name="password"
           placeholder="Zaporka"
           type="password"
         />

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "localhost:4000",
+  baseURL: "https://animadvor-server.herokuapp.com",
 });
 
 export default api;

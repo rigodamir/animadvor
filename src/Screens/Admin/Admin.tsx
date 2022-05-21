@@ -1,13 +1,12 @@
 import { Routes, Route } from "react-router-dom";
-import NavBar from "./NavBar";
+import { AdminNovostiScreen } from "./AdminNovostiScreen";
+import { AdminZivotinjeScreen } from "./AdminZivotinjeScreen";
 
 export const Admin = () => {
   return (
-    <NavBar>
-      <Routes>
-        <Route path="admin/novosti" element={<></>} />
-        <Route path="admin/zivotinje" element={<></>} />
-      </Routes>
-    </NavBar>
+    <Routes>
+      <Route path="/novosti" element={<AdminNovostiScreen />} />
+      <Route path="/zivotinje" element={<AdminZivotinjeScreen />} />
+    </Routes>
   );
 };
