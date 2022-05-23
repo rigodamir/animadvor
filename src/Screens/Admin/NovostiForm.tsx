@@ -17,8 +17,6 @@ export const NovostiForm = ({
 }: NovostiFormProps) => {
   const { control, handleSubmit, reset } = useForm();
 
-  console.log(oldState, "molim lijepo");
-
   useEffect(() => {
     if (!isNew) {
       reset(oldState);

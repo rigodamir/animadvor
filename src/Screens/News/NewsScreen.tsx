@@ -1,10 +1,23 @@
 import { Box, Grid, Center, Text } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import { Footer } from "../../Components/Footer/Footer";
 import { NavigationBar } from "../../Components/NavigationBar/NavigationBar";
 import { NewsCard } from "../../Components/NewsCard/NewsCard";
-import { news } from "./consts";
+import { getNews } from "../../Services/newsApi";
 
 export const NewsScreen = () => {
+  const [news, setNews] = useState<any>([]);
+
+  useEffect(() => {
+    const getScreenNews = async () => {
+      const data = await getNews();
+
+      setNews(data);
+    };
+
+    getScreenNews();
+  }, []);
+
   return (
     <>
       <NavigationBar />
@@ -21,15 +34,16 @@ export const NewsScreen = () => {
                 base: "repeat(1, 1fr)",
               }}
             >
-              {news.map((item) => {
-                return (
-                  <NewsCard
-                    body={item.body}
-                    title={item.title}
-                    imageUrl={item.imageUrl}
-                  />
-                );
-              })}
+              {news &&
+                news.map((item: any) => {
+                  return (
+                    <NewsCard
+                      body={item.body}
+                      title={item.title}
+                      imageUrl={item.imageUrl}
+                    />
+                  );
+                })}
             </Grid>
           </Center>
         </Box>

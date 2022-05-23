@@ -1,10 +1,24 @@
 import { Center, Box, Text, Checkbox, Grid } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import { AnimalCard } from "../../Components/AnimalCard/AnimalCard";
+import { Animal } from "../../Components/AnimalCard/types";
 import { Footer } from "../../Components/Footer/Footer";
 import { NavigationBar } from "../../Components/NavigationBar/NavigationBar";
-import { animals } from "./consts";
+import { getAnimals } from "../../Services/animalApi";
 
 export const AnimalsScreen = () => {
+  const [animals, setAnimals] = useState<any>();
+
+  useEffect(() => {
+    const getScreenAnimals = async () => {
+      const data = await getAnimals();
+
+      setAnimals(data);
+    };
+
+    getScreenAnimals();
+  }, []);
+
   return (
     <>
       <NavigationBar />
@@ -68,19 +82,20 @@ export const AnimalsScreen = () => {
                   lg: "repeat(3, 1fr)",
                 }}
               >
-                {animals.map((animal) => {
-                  return (
-                    <AnimalCard
-                      name={animal.name}
-                      bodyText={animal.bodyText}
-                      imageUrl={animal.imageUrl}
-                      age={animal.age}
-                      gender={animal.gender}
-                      size={animal.size}
-                      personality={animal.personality}
-                    />
-                  );
-                })}
+                {animals &&
+                  animals.map((animal: Animal) => {
+                    return (
+                      <AnimalCard
+                        name={animal.name}
+                        bodyText={animal.bodyText}
+                        imageUrl={animal.imageUrl}
+                        age={animal.age}
+                        gender={animal.gender}
+                        size={animal.size}
+                        personality={animal.personality}
+                      />
+                    );
+                  })}
               </Grid>
             </Box>
           </Center>

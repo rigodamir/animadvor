@@ -33,7 +33,7 @@ export const AdminNovostiScreen = () => {
 
   const handleDeleteNews = async (id: any) => {
     await deleteNews(id);
-    handleGetNews();
+    await handleGetNews();
   };
 
   const handleOpen = (item: any, isCreate: boolean) => {

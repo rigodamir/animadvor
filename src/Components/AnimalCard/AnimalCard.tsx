@@ -1,9 +1,10 @@
-import { Box, Text, Image, Badge } from "@chakra-ui/react";
+import { Box, Text, Image, Badge, theme } from "@chakra-ui/react";
+import { BsFillImageFill } from "react-icons/bs";
 
 export interface AnimalCardProps {
   name: string;
   bodyText: string;
-  imageUrl: string;
+  imageUrl?: string;
   age: string;
   gender: string;
   size: string;
@@ -27,7 +28,7 @@ export const AnimalCard = ({
       borderWidth="thin"
       borderRadius={10}
     >
-      {imageUrl && (
+      {imageUrl ? (
         <Image
           src={imageUrl}
           style={{
@@ -38,6 +39,16 @@ export const AnimalCard = ({
             borderTopRightRadius: 10,
           }}
         />
+      ) : (
+        <Box
+          height={200}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          borderBottomWidth={1}
+        >
+          <BsFillImageFill size={50} color={theme.colors.gray[700]} />
+        </Box>
       )}
       <Box p={5}>
         <Box display="flex" flexDirection="row">

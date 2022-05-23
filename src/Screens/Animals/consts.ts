@@ -6,8 +6,6 @@ export const animals: AnimalCardProps[] = [
     bodyText:
       "Mrvica treba dom zauvijek ❤️ Mali , slatki zvrk , mlada cca 2,5 godine , na prvu bi mogla bit malo nepovjerljiva u novom domu , jer se pojavila kod doma zdravlja pretucena , od tamo ju je vozac hitne kao udomio u Sisak , da bi ja vidjela objavu da je kod Konzuma u Sisku , bila je tad u tjeranju sa hrpom velikih muzjak oko nje i nisam mogla dozvolit da tamo ostane i odtad je kod nas... Malog rasta, zato je i dobila ime Mrvica i jako umiljata kada se opusti , sa drugim psima ok, sa djecom isto , mali preslatki psic ❤️ Cijepljena, cipirana, prije udomljenja biti ce i kastrirana.",
     gender: "Muško",
-    imageUrl:
-      "https://scontent-frt3-1.xx.fbcdn.net/v/t39.30808-6/233594998_10226310551897964_6233357865676719685_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=iXx-p1ZHyw0AX8UTfY3&tn=A7NYY5-Mv1jx6E75&_nc_ht=scontent-frt3-1.xx&oh=00_AT_g8e5lMFpbxWvfcLfdzOHlTwFs_AdgFxPxpjxy-0D8Hw&oe=6259793A",
     name: "Mrvica",
     personality: "socijaliziran",
     size: "mali",
