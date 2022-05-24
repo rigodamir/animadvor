@@ -1,8 +1,11 @@
 import api from "./api";
 
-export const getAnimals = async (pageNumber?: number) => {
+export const getAnimals = async (pageNumber?: number, filters?: any) => {
   try {
-    const { data } = await api.get(`/animal/${pageNumber}`);
+    const { data } = await api.post(`/getanimals`, {
+      filter: filters,
+      page: pageNumber,
+    });
 
     return data;
   } catch (e) {
@@ -13,6 +16,8 @@ export const getAnimals = async (pageNumber?: number) => {
 export const createAnimal = async (formData: any) => {
   try {
     const { data } = await api.post("/animal", formData);
+
+    return data;
   } catch (e) {
     console.log(e);
   }

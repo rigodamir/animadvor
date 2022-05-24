@@ -1,17 +1,43 @@
-import { Center, Box, Text, Checkbox, Grid } from "@chakra-ui/react";
+import {
+  Center,
+  Box,
+  Text,
+  Checkbox,
+  Grid,
+  Button,
+  Divider,
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { AnimalCard } from "../../Components/AnimalCard/AnimalCard";
-import { Animal } from "../../Components/AnimalCard/types";
+import {
+  Animal,
+  Dob,
+  Personality,
+  Size,
+  Spol,
+} from "../../Components/AnimalCard/types";
 import { Footer } from "../../Components/Footer/Footer";
+import { CheckboxGroupController } from "../../Components/Form/CheckboxGroupController";
 import { NavigationBar } from "../../Components/NavigationBar/NavigationBar";
 import { getAnimals } from "../../Services/animalApi";
 
 export const AnimalsScreen = () => {
   const [animals, setAnimals] = useState<any>();
+  const { control, handleSubmit } = useForm();
+
+  const onHandleSubmit = () => {
+    handleSubmit(async (data) => {
+      console.log(data);
+      const filteredAnimals = await getAnimals(0, data);
+
+      setAnimals(filteredAnimals);
+    })();
+  };
 
   useEffect(() => {
     const getScreenAnimals = async () => {
-      const data = await getAnimals();
+      const data = await getAnimals(0);
 
       setAnimals(data);
     };
@@ -24,12 +50,7 @@ export const AnimalsScreen = () => {
       <NavigationBar />
       <Center>
         <Box flex={1} px={10} py={50} alignItems="center" maxW={1200}>
-          <Text
-            fontWeight="bold"
-            fontSize="4xl"
-            mb={10}
-            textAlign={{ base: "center", md: "left" }}
-          >
+          <Text fontWeight="bold" fontSize="4xl" mb={10} textAlign="center">
             Životinje
           </Text>
           <Center>
@@ -50,27 +71,51 @@ export const AnimalsScreen = () => {
                 <Text fontSize="large" my={2}>
                   Veličine
                 </Text>
-                <Checkbox>Veliki</Checkbox>
-                <Checkbox>Srednji</Checkbox>
-                <Checkbox>Manji</Checkbox>
-                <Text fontSize="large" my={2}>
-                  Aktivnost
-                </Text>
-                <Checkbox>Aktivni</Checkbox>
-                <Checkbox>Manje aktivni</Checkbox>
-                <Checkbox>Plahi</Checkbox>
-                <Checkbox>Socijalizirani</Checkbox>
-                <Text fontSize="large" my={2}>
-                  Spol
-                </Text>
-                <Checkbox>Muško</Checkbox>
-                <Checkbox>Žensko</Checkbox>
-                <Text fontSize="large" my={2}>
-                  Dob
-                </Text>
-                <Checkbox>Štene</Checkbox>
-                <Checkbox>Mladi</Checkbox>
-                <Checkbox>Odrastao</Checkbox>
+                <CheckboxGroupController
+                  control={control}
+                  name="size"
+                  label="Veličine"
+                >
+                  <Checkbox value={Size.veliki}>Veliki</Checkbox>
+                  <Checkbox value={Size.srednji}>Srednji</Checkbox>
+                  <Checkbox value={Size.manji}>Manji</Checkbox>
+                </CheckboxGroupController>
+                <CheckboxGroupController
+                  control={control}
+                  name="personality"
+                  label="Aktivnost"
+                >
+                  <Checkbox value={Personality.aktivni}>Aktivni</Checkbox>
+                  <Checkbox value={Personality.manjeAktivni}>
+                    Manje aktivni
+                  </Checkbox>
+                  <Checkbox value={Personality.plahi}>Plahi</Checkbox>
+                  <Checkbox value={Personality.socijalizirani}>
+                    Socijalizirani
+                  </Checkbox>
+                </CheckboxGroupController>
+
+                <CheckboxGroupController
+                  control={control}
+                  name="gender"
+                  label="Spol"
+                >
+                  <Checkbox value={Spol.musko}>Muško</Checkbox>
+                  <Checkbox value={Spol.zensko}>Žensko</Checkbox>
+                </CheckboxGroupController>
+                <CheckboxGroupController
+                  control={control}
+                  name="age"
+                  label="Dob"
+                >
+                  <Checkbox value={Dob.stene}>Štene</Checkbox>
+                  <Checkbox value={Dob.mladi}>Mladi</Checkbox>
+                  <Checkbox value={Dob.odrastao}>Odrastao</Checkbox>
+                </CheckboxGroupController>
+                <Divider w="80%" mt={2} />
+                <Button colorScheme="blue" my={2} onClick={onHandleSubmit}>
+                  Filtriraj
+                </Button>
               </Box>
 
               <Grid
