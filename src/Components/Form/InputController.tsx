@@ -1,4 +1,4 @@
-import { Input, InputProps, Textarea } from "@chakra-ui/react";
+import { Input, InputProps, Textarea, Text } from "@chakra-ui/react";
 import { Control, Controller } from "react-hook-form";
 
 export interface InputControllerProps extends InputProps {
@@ -14,6 +14,7 @@ export const InputController = ({
   name,
   placeholder,
   isTextArea,
+  label,
   ...props
 }: InputControllerProps) => {
   return (
@@ -21,25 +22,32 @@ export const InputController = ({
       control={control}
       name={name}
       render={({ field }) => {
-        return !isTextArea ? (
-          <Input
-            {...props}
-            value={field.value}
-            backgroundColor="white"
-            marginY={2}
-            onChange={field.onChange}
-            onBlur={field.onBlur}
-            placeholder={placeholder}
-          />
-        ) : (
-          <Textarea
-            value={field.value}
-            backgroundColor="white"
-            marginY={2}
-            onChange={field.onChange}
-            onBlur={field.onBlur}
-            placeholder={placeholder}
-          />
+        return (
+          <>
+            <Text mb="px" mt="4">
+              {label}
+            </Text>
+            {!isTextArea ? (
+              <Input
+                {...props}
+                value={field.value}
+                backgroundColor="white"
+                marginY={2}
+                onChange={field.onChange}
+                onBlur={field.onBlur}
+                placeholder={placeholder}
+              />
+            ) : (
+              <Textarea
+                value={field.value}
+                backgroundColor="white"
+                marginY={2}
+                onChange={field.onChange}
+                onBlur={field.onBlur}
+                placeholder={placeholder}
+              />
+            )}
+          </>
         );
       }}
     />

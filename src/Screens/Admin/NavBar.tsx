@@ -18,6 +18,7 @@ import { Link as LinkRoute } from "react-router-dom";
 import { FiBookOpen, FiMenu } from "react-icons/fi";
 import { FaDog } from "react-icons/fa";
 import { RiLogoutBoxLine } from "react-icons/ri";
+import { AiOutlineUser } from "react-icons/ai";
 import { IconType } from "react-icons";
 import { ReactText } from "react";
 
@@ -29,6 +30,7 @@ interface LinkItemProps {
 const LinkItems: Array<LinkItemProps> = [
   { name: "Novosti", icon: FiBookOpen, route: "/admin/novosti" },
   { name: "Životinje", icon: FaDog, route: "/admin/zivotinje" },
+  { name: "Korisnici", icon: AiOutlineUser, route: "/admin/korisnici" },
   { name: "Odjava", icon: RiLogoutBoxLine, route: "/" },
 ];
 

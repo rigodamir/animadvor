@@ -5,7 +5,7 @@ export interface CheckboxGroupControllerProps extends CheckboxGroupProps {
   control: Control<any>;
   name: string;
   label?: string;
-  children: JSX.Element[];
+  children: JSX.Element[] | JSX.Element;
 }
 
 export const CheckboxGroupController = ({
@@ -23,7 +23,7 @@ export const CheckboxGroupController = ({
         return (
           <>
             <Text mb="8px" mt="4">
-              {label}:
+              {label}
             </Text>
             <CheckboxGroup
               onChange={field.onChange}

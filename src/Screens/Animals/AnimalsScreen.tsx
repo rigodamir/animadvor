@@ -68,9 +68,7 @@ export const AnimalsScreen = () => {
                 <Text fontWeight="semibold" fontSize="larger" mb={5}>
                   Filteri
                 </Text>
-                <Text fontSize="large" my={2}>
-                  Veličine
-                </Text>
+
                 <CheckboxGroupController
                   control={control}
                   name="size"

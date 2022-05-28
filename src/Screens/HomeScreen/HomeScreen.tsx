@@ -1,15 +1,28 @@
 import { Box, Text, Input, Textarea, Center } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as AnimadvorLogo } from "../../Assets/vectors/animadvorLogo.svg";
 import { Footer } from "../../Components/Footer/Footer";
 import { HelperBadges } from "../../Components/HelperBadges/HelperBadges";
 import { NavigationBar } from "../../Components/NavigationBar/NavigationBar";
 import { NewsCard } from "../../Components/NewsCard/NewsCard";
-import { news } from "../News/consts";
+import { getNews } from "../../Services/newsApi";
 
 export const HomeScreen = () => {
   const text =
     "Dođite, upoznajte ih sve, provedite predivno vrijeme sa svim tim divnim njuškicama i nikad ne znate , možda baš neka od njih osvoji vaše srce i postane dio vaše obitelji.";
+
+  const [news, setNews] = useState<any>([]);
+
+  useEffect(() => {
+    const getScreenAnimals = async () => {
+      const data = await getNews(0);
+
+      setNews(data);
+    };
+
+    getScreenAnimals();
+  }, []);
 
   return (
     <>
@@ -71,15 +84,16 @@ export const HomeScreen = () => {
                 justifyContent="space-between"
                 flexDirection={{ base: "column", lg: "row" }}
               >
-                {news.slice(0, 3).map((item) => {
-                  return (
-                    <NewsCard
-                      body={item.body}
-                      title={item.title}
-                      imageUrl={item.imageUrl}
-                    />
-                  );
-                })}
+                {news &&
+                  news.slice(0, 3).map((item: any) => {
+                    return (
+                      <NewsCard
+                        body={item.body}
+                        title={item.title}
+                        imageUrl={item.imageUrl}
+                      />
+                    );
+                  })}
               </Box>
             </Center>
             <Box>

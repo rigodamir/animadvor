@@ -27,6 +27,7 @@ export const AnimalCard = ({
       borderColor="gray.300"
       borderWidth="thin"
       borderRadius={10}
+      maxH={400}
     >
       {imageUrl ? (
         <Image
