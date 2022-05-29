@@ -33,7 +33,7 @@ export const KorisniciForm = ({ handleClose }: KorisniciFormProps) => {
 
   useEffect(() => {
     if (isAdminChecked) setValue("animal", null);
-  }, [isAdminChecked]);
+  }, [isAdminChecked, setValue]);
 
   return (
     <Box paddingX={2}>

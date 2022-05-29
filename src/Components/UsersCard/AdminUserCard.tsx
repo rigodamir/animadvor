@@ -1,11 +1,11 @@
 import { Box, Text } from "@chakra-ui/react";
 
-export interface AdminUserCard {
+export interface AdminUserCardProps {
   name: string;
   isAdmin: boolean;
 }
 
-export const AdminUserCard = ({ name, isAdmin }: AdminUserCard) => {
+export const AdminUserCard = ({ name, isAdmin }: AdminUserCardProps) => {
   return (
     <Box
       maxW="400"
