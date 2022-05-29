@@ -1,3 +1,4 @@
+import _ from "lodash";
 import {
   Box,
   Button,
@@ -24,9 +25,15 @@ export interface ImageModalProps {
   title: string;
   isOpen: boolean;
   closeModal(): void;
+  handleUploadImage(images: any[]): void;
 }
 
-export const ImageModal = ({ title, isOpen, closeModal }: ImageModalProps) => {
+export const ImageModal = ({
+  title,
+  isOpen,
+  closeModal,
+  handleUploadImage,
+}: ImageModalProps) => {
   const [formImages, setFormImages] = useState<any[]>([]);
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -50,15 +57,26 @@ export const ImageModal = ({ title, isOpen, closeModal }: ImageModalProps) => {
               console.log(error);
             },
           });
+          return null;
         });
       }
     },
   });
 
+  const handleCloseModal = () => {
+    setFormImages([]);
+    closeModal();
+  };
+
   const deleteImage = (preview: string) => {
     setFormImages((formImages) =>
       formImages.filter((image) => image.preview !== preview)
     );
+  };
+
+  const handleSaveImages = async () => {
+    handleUploadImage(formImages);
+    closeModal();
   };
 
   return (
@@ -71,7 +89,7 @@ export const ImageModal = ({ title, isOpen, closeModal }: ImageModalProps) => {
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>{title}</ModalHeader>
-        <ModalCloseButton onClick={closeModal} />
+        <ModalCloseButton onClick={handleCloseModal} />
         <ModalBody>
           <div
             style={{
@@ -82,6 +100,7 @@ export const ImageModal = ({ title, isOpen, closeModal }: ImageModalProps) => {
               borderWidth: 1,
               borderRadius: 10,
               marginBottom: 20,
+              cursor: "pointer",
             }}
             {...getRootProps({ className: "dropzone" })}
           >
@@ -132,10 +151,16 @@ export const ImageModal = ({ title, isOpen, closeModal }: ImageModalProps) => {
             })}
           </Grid>
           <ModalFooter>
-            <Button colorScheme="gray" mr={5} onClick={closeModal}>
+            <Button colorScheme="gray" mr={5} onClick={handleCloseModal}>
               Odustani
             </Button>
-            <Button colorScheme="blue">Spremi</Button>
+            <Button
+              colorScheme="blue"
+              disabled={_.isEmpty(formImages)}
+              onClick={handleSaveImages}
+            >
+              Spremi
+            </Button>
           </ModalFooter>
         </ModalBody>
       </ModalContent>

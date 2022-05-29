@@ -1,5 +1,5 @@
-import { Box, Button, Radio } from "@chakra-ui/react";
-import { useEffect } from "react";
+import { Button, Radio } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   Dob,
@@ -10,6 +10,9 @@ import {
 import { InputController } from "../../Components/Form/InputController";
 import { RadioGroupController } from "../../Components/Form/RadioGroupController";
 import { createAnimal, updateAnimal } from "../../Services/animalApi";
+import { uploadImage } from "../../Services/imageApi";
+import { ImageModal } from "./ImageModal";
+import { AiOutlineFileImage } from "react-icons/ai";
 
 export interface ZivotinjeFormProps {
   handleClose(): void;
@@ -22,13 +25,22 @@ export const ZivotinjeForm = ({
   oldState,
   handleClose,
 }: ZivotinjeFormProps) => {
-  const { control, handleSubmit, reset } = useForm();
+  const { control, handleSubmit, reset, setValue } = useForm();
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
 
   useEffect(() => {
     if (!isNew) {
       reset(oldState);
     }
   }, [oldState, isNew, reset]);
+
+  const handleOpenImageModal = () => {
+    setIsImageModalOpen(true);
+  };
+
+  const handleCloseImageModal = () => {
+    setIsImageModalOpen(false);
+  };
 
   const onHandleSubmit = () => {
     handleSubmit(async (data) => {
@@ -37,8 +49,19 @@ export const ZivotinjeForm = ({
     })();
   };
 
+  const handleUploadImages = async (images: any[]) => {
+    const imageUrls = await Promise.all(
+      images.map(async (image) => {
+        const data = await uploadImage(image);
+        return data;
+      })
+    );
+
+    setValue("imageUrls", imageUrls);
+  };
+
   return (
-    <Box paddingX={2}>
+    <>
       <InputController
         control={control}
         name="name"
@@ -95,6 +118,16 @@ export const ZivotinjeForm = ({
         <Radio value={Personality.plahi}>Plahi</Radio>
         <Radio value={Personality.socijalizirani}>Socijalizirani</Radio>
       </RadioGroupController>
+      {isNew && (
+        <Button
+          colorScheme="gray"
+          marginTop={4}
+          onClick={handleOpenImageModal}
+          rightIcon={<AiOutlineFileImage />}
+        >
+          Dodaj slike
+        </Button>
+      )}
 
       <Button
         colorScheme="blue"
@@ -104,6 +137,15 @@ export const ZivotinjeForm = ({
       >
         {isNew ? "Dodaj životinju" : "Izmijeni životinju"}
       </Button>
-    </Box>
+
+      {isNew && (
+        <ImageModal
+          isOpen={isImageModalOpen}
+          closeModal={handleCloseImageModal}
+          title="Dodaj Slike"
+          handleUploadImage={handleUploadImages}
+        />
+      )}
+    </>
   );
 };

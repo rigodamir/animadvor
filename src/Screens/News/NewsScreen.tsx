@@ -40,7 +40,7 @@ export const NewsScreen = () => {
                     <NewsCard
                       body={item.body}
                       title={item.title}
-                      imageUrl={item.imageUrl}
+                      imageUrls={item.imageUrls}
                     />
                   );
                 })}

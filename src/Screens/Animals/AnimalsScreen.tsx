@@ -131,7 +131,7 @@ export const AnimalsScreen = () => {
                       <AnimalCard
                         name={animal.name}
                         bodyText={animal.bodyText}
-                        imageUrl={animal.imageUrl}
+                        imageUrls={animal.imageUrls}
                         age={animal.age}
                         gender={animal.gender}
                         size={animal.size}

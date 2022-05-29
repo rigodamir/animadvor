@@ -3,6 +3,7 @@ import {
   Button,
   Divider,
   Drawer,
+  DrawerBody,
   DrawerCloseButton,
   DrawerContent,
   DrawerHeader,
@@ -59,24 +60,26 @@ export const AdminZivotinjeScreen = () => {
     <NavBar>
       <Drawer isOpen={isOpen} placement="right" onClose={() => {}} size="lg">
         <DrawerOverlay />
-        <DrawerContent scrollBehavior="auto">
+        <DrawerContent scrollBehavior="smooth">
           <DrawerCloseButton onClick={handleClose} />
           <DrawerHeader borderBottomWidth="1px">
             Dodaj novu životinju
           </DrawerHeader>
-          <ZivotinjeForm
-            isNew={isNew}
-            oldState={{
-              name: oldAnimal.name,
-              bodyText: oldAnimal.bodyText,
-              age: oldAnimal.age,
-              gender: oldAnimal.gender,
-              size: oldAnimal.size,
-              personality: oldAnimal.personality,
-              id: oldAnimal._id,
-            }}
-            handleClose={handleClose}
-          />
+          <DrawerBody>
+            <ZivotinjeForm
+              isNew={isNew}
+              oldState={{
+                name: oldAnimal.name,
+                bodyText: oldAnimal.bodyText,
+                age: oldAnimal.age,
+                gender: oldAnimal.gender,
+                size: oldAnimal.size,
+                personality: oldAnimal.personality,
+                id: oldAnimal._id,
+              }}
+              handleClose={handleClose}
+            />
+          </DrawerBody>
         </DrawerContent>
       </Drawer>
       <Box backgroundColor="white" borderRadius={10} padding="4">

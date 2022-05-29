@@ -1,10 +1,11 @@
-import { Box, Button } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { InputController } from "../../Components/Form/InputController";
 import { createNews, updateNews } from "../../Services/newsApi";
 import { AiOutlineFileImage } from "react-icons/ai";
 import { ImageModal } from "./ImageModal";
+import { uploadImage } from "../../Services/imageApi";
 
 export interface NovostiFormProps {
   handleClose?(): void;
@@ -17,7 +18,7 @@ export const NovostiForm = ({
   oldState,
   handleClose,
 }: NovostiFormProps) => {
-  const { control, handleSubmit, reset } = useForm();
+  const { control, handleSubmit, reset, setValue } = useForm();
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
 
   useEffect(() => {
@@ -47,24 +48,33 @@ export const NovostiForm = ({
     })();
   };
 
-  //TODO send images made from ImageModal
+  const handleUploadImages = async (images: any[]) => {
+    const imageUrls = await Promise.all(
+      images.map(async (image) => {
+        const data = await uploadImage(image);
+        return data;
+      })
+    );
+
+    setValue("imageUrls", imageUrls);
+  };
 
   return (
     <>
-      <Box paddingX={2}>
-        <InputController
-          control={control}
-          name="title"
-          label="Naslov"
-          placeholder={"Upišite naslov"}
-        />
-        <InputController
-          isTextArea
-          control={control}
-          name="body"
-          label="Članak"
-          placeholder={"Upišite članak"}
-        />
+      <InputController
+        control={control}
+        name="title"
+        label="Naslov"
+        placeholder={"Upišite naslov"}
+      />
+      <InputController
+        isTextArea
+        control={control}
+        name="body"
+        label="Članak"
+        placeholder={"Upišite članak"}
+      />
+      {isNew && (
         <Button
           colorScheme="gray"
           marginTop={2}
@@ -73,20 +83,24 @@ export const NovostiForm = ({
         >
           Dodaj slike
         </Button>
-        <Button
-          colorScheme="blue"
-          width="100%"
-          marginTop={4}
-          onClick={() => onHandleSubmit()}
-        >
-          {isNew ? "Dodaj članak" : "Izmijeni članak"}
-        </Button>
-      </Box>
-      <ImageModal
-        isOpen={isImageModalOpen}
-        closeModal={handleCloseImageModal}
-        title="Dodaj Slike"
-      />
+      )}
+      <Button
+        colorScheme="blue"
+        width="100%"
+        marginTop={4}
+        onClick={() => onHandleSubmit()}
+      >
+        {isNew ? "Dodaj članak" : "Izmijeni članak"}
+      </Button>
+
+      {isNew && (
+        <ImageModal
+          isOpen={isImageModalOpen}
+          closeModal={handleCloseImageModal}
+          title="Dodaj Slike"
+          handleUploadImage={handleUploadImages}
+        />
+      )}
     </>
   );
 };

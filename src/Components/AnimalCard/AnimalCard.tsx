@@ -1,10 +1,11 @@
 import { Box, Text, Image, Badge, theme } from "@chakra-ui/react";
+import _ from "lodash";
 import { BsFillImageFill } from "react-icons/bs";
 
 export interface AnimalCardProps {
   name: string;
   bodyText: string;
-  imageUrl?: string;
+  imageUrls?: string[];
   age: string;
   gender: string;
   size: string;
@@ -14,7 +15,7 @@ export interface AnimalCardProps {
 export const AnimalCard = ({
   name,
   bodyText,
-  imageUrl,
+  imageUrls,
   gender,
   size,
   age,
@@ -29,9 +30,9 @@ export const AnimalCard = ({
       borderRadius={10}
       maxH={400}
     >
-      {imageUrl ? (
+      {!_.isEmpty(imageUrls) ? (
         <Image
-          src={imageUrl}
+          src={imageUrls![0] || ""}
           style={{
             objectFit: "cover",
             height: 200,

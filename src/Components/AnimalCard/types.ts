@@ -25,7 +25,7 @@ export enum Dob {
 export interface Animal {
   name: string;
   bodyText: string;
-  imageUrl: string;
+  imageUrls: string[];
   age: string;
   gender: string;
   size: string;

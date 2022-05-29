@@ -1,13 +1,14 @@
 import { Box, Text, Image, theme } from "@chakra-ui/react";
+import _ from "lodash";
 import { BsFillImageFill } from "react-icons/bs";
 
 export interface NewsCardProps {
   title: string;
   body: string;
-  imageUrl?: string;
+  imageUrls?: string[];
 }
 
-export const NewsCard = ({ title, body, imageUrl }: NewsCardProps) => {
+export const NewsCard = ({ title, body, imageUrls }: NewsCardProps) => {
   return (
     <Box
       maxW="300"
@@ -18,9 +19,9 @@ export const NewsCard = ({ title, body, imageUrl }: NewsCardProps) => {
       borderWidth="thin"
       borderRadius={10}
     >
-      {imageUrl ? (
+      {!_.isEmpty(imageUrls) ? (
         <Image
-          src={imageUrl}
+          src={imageUrls![0] || ""}
           style={{
             objectFit: "cover",
             height: 200,

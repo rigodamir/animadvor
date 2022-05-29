@@ -3,6 +3,7 @@ import {
   Button,
   Divider,
   Drawer,
+  DrawerBody,
   DrawerCloseButton,
   DrawerContent,
   DrawerHeader,
@@ -56,15 +57,17 @@ export const AdminNovostiScreen = () => {
           <DrawerHeader borderBottomWidth="1px">
             Napravi novi članak
           </DrawerHeader>
-          <NovostiForm
-            isNew={isNew}
-            oldState={{
-              title: oldNews.title,
-              body: oldNews.body,
-              id: oldNews._id,
-            }}
-            handleClose={handleClose}
-          />
+          <DrawerBody>
+            <NovostiForm
+              isNew={isNew}
+              oldState={{
+                title: oldNews.title,
+                body: oldNews.body,
+                id: oldNews._id,
+              }}
+              handleClose={handleClose}
+            />
+          </DrawerBody>
         </DrawerContent>
       </Drawer>
       <Box backgroundColor="white" borderRadius={10} padding="4">
