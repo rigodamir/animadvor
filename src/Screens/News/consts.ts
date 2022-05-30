@@ -1,6 +1,6 @@
-import { NewsCardProps } from "../../Components/NewsCard/NewsCard";
+import { News } from "../../Components/NewsCard/types";
 
-export const news: NewsCardProps[] = [
+export const news: News[] = [
   {
     imageUrls: [
       "https://scontent-frx5-1.xx.fbcdn.net/v/t39.30808-6/277562427_10227663307956020_8228504622204923481_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=973b4a&_nc_ohc=Dpj4Q_aC9X4AX-m1XNm&_nc_ht=scontent-frx5-1.xx&oh=00_AT8e6LiHedJWFO0Gyqcr8qrb4XWBxce2ymb1U4V3jm9puA&oe=6258473A",

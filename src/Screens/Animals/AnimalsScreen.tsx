@@ -10,6 +10,7 @@ import {
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AnimalCard } from "../../Components/AnimalCard/AnimalCard";
+import { AnimalModal } from "../../Components/AnimalCard/AnimalModal";
 import {
   Animal,
   Dob,
@@ -24,6 +25,8 @@ import { getAnimals } from "../../Services/animalApi";
 
 export const AnimalsScreen = () => {
   const [animals, setAnimals] = useState<any>();
+  const [selectedAnimal, setSelectedAnimal] = useState<Animal | null>(null);
+  const [isAnimalModalOpen, setIsAnimalModalOpen] = useState(false);
   const { control, handleSubmit } = useForm();
 
   const onHandleSubmit = () => {
@@ -44,6 +47,16 @@ export const AnimalsScreen = () => {
 
     getScreenAnimals();
   }, []);
+
+  const handleOpenAnimalModal = (animal: Animal) => {
+    setIsAnimalModalOpen(true);
+    setSelectedAnimal(animal);
+  };
+
+  const handleCloseAnimalModal = () => {
+    setIsAnimalModalOpen(false);
+    setSelectedAnimal(null);
+  };
 
   return (
     <>
@@ -129,13 +142,8 @@ export const AnimalsScreen = () => {
                   animals.map((animal: Animal) => {
                     return (
                       <AnimalCard
-                        name={animal.name}
-                        bodyText={animal.bodyText}
-                        imageUrls={animal.imageUrls}
-                        age={animal.age}
-                        gender={animal.gender}
-                        size={animal.size}
-                        personality={animal.personality}
+                        animal={animal}
+                        onOpenModal={handleOpenAnimalModal}
                       />
                     );
                   })}
@@ -144,6 +152,11 @@ export const AnimalsScreen = () => {
           </Center>
         </Box>
       </Center>
+      <AnimalModal
+        animal={selectedAnimal}
+        isOpen={isAnimalModalOpen}
+        handleClose={handleCloseAnimalModal}
+      />
       <Footer />
     </>
   );

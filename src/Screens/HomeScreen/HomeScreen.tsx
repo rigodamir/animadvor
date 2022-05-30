@@ -88,6 +88,7 @@ export const HomeScreen = () => {
                   news.slice(0, 3).map((item: any) => {
                     return (
                       <NewsCard
+                        onOpenModal={() => {}}
                         body={item.body}
                         title={item.title}
                         imageUrls={item.imageUrls}

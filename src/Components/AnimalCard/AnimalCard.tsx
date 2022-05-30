@@ -1,25 +1,15 @@
 import { Box, Text, Image, Badge, theme } from "@chakra-ui/react";
 import _ from "lodash";
 import { BsFillImageFill } from "react-icons/bs";
+import { Animal } from "./types";
 
 export interface AnimalCardProps {
-  name: string;
-  bodyText: string;
-  imageUrls?: string[];
-  age: string;
-  gender: string;
-  size: string;
-  personality: string;
+  animal: Animal;
+  onOpenModal(animal: Animal): void;
 }
 
-export const AnimalCard = ({
-  name,
-  bodyText,
-  imageUrls,
-  gender,
-  size,
-  age,
-}: AnimalCardProps) => {
+export const AnimalCard = ({ animal, onOpenModal }: AnimalCardProps) => {
+  const { name, age, bodyText, gender, imageUrls, size } = animal;
   return (
     <Box
       maxW="250"
@@ -29,6 +19,10 @@ export const AnimalCard = ({
       borderWidth="thin"
       borderRadius={10}
       maxH={400}
+      cursor="pointer"
+      onClick={() => {
+        onOpenModal(animal);
+      }}
     >
       {!_.isEmpty(imageUrls) ? (
         <Image

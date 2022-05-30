@@ -3,10 +3,14 @@ import { useEffect, useState } from "react";
 import { Footer } from "../../Components/Footer/Footer";
 import { NavigationBar } from "../../Components/NavigationBar/NavigationBar";
 import { NewsCard } from "../../Components/NewsCard/NewsCard";
+import { NewsModal } from "../../Components/NewsCard/NewsModal";
+import { News } from "../../Components/NewsCard/types";
 import { getNews } from "../../Services/newsApi";
 
 export const NewsScreen = () => {
   const [news, setNews] = useState<any>([]);
+  const [selectedNews, setSelectedNews] = useState<News | null>(null);
+  const [isNewsModalOpen, setIsNewsModalOpen] = useState(false);
 
   useEffect(() => {
     const getScreenNews = async () => {
@@ -17,6 +21,16 @@ export const NewsScreen = () => {
 
     getScreenNews();
   }, []);
+
+  const handleOpenNewsModal = (n: News) => {
+    setSelectedNews(n);
+    setIsNewsModalOpen(true);
+  };
+
+  const handleCloseNewsModal = () => {
+    setSelectedNews(null);
+    setIsNewsModalOpen(false);
+  };
 
   return (
     <>
@@ -41,6 +55,7 @@ export const NewsScreen = () => {
                       body={item.body}
                       title={item.title}
                       imageUrls={item.imageUrls}
+                      onOpenModal={handleOpenNewsModal}
                     />
                   );
                 })}
@@ -48,6 +63,11 @@ export const NewsScreen = () => {
           </Center>
         </Box>
       </Center>
+      <NewsModal
+        news={selectedNews}
+        handleClose={handleCloseNewsModal}
+        isOpen={isNewsModalOpen}
+      />
       <Footer />
     </>
   );

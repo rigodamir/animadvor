@@ -1,6 +1,6 @@
-import { AnimalCardProps } from "../../Components/AnimalCard/AnimalCard";
+import { Animal } from "../../Components/AnimalCard/types";
 
-export const animals: AnimalCardProps[] = [
+export const animals: Animal[] = [
   {
     age: "mladi",
     bodyText:

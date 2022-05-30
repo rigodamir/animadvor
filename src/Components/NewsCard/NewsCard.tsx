@@ -1,14 +1,21 @@
 import { Box, Text, Image, theme } from "@chakra-ui/react";
 import _ from "lodash";
 import { BsFillImageFill } from "react-icons/bs";
+import { News } from "./types";
 
 export interface NewsCardProps {
   title: string;
   body: string;
   imageUrls?: string[];
+  onOpenModal(n: News): void;
 }
 
-export const NewsCard = ({ title, body, imageUrls }: NewsCardProps) => {
+export const NewsCard = ({
+  title,
+  body,
+  imageUrls,
+  onOpenModal,
+}: NewsCardProps) => {
   return (
     <Box
       maxW="300"
@@ -18,6 +25,9 @@ export const NewsCard = ({ title, body, imageUrls }: NewsCardProps) => {
       borderColor="gray.300"
       borderWidth="thin"
       borderRadius={10}
+      onClick={() =>
+        onOpenModal({ title: title, body: body, imageUrls: imageUrls || [] })
+      }
     >
       {!_.isEmpty(imageUrls) ? (
         <Image
